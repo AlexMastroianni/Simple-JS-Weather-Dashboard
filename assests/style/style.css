@@ -1,0 +1,57 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 0.6fr 2.1fr 1.4fr 0.5fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: 2px solid black;
+  grid-template-areas:
+    "title . . ."
+    "searchBar . . ."
+    "searchResults currentForcast currentForcast currentForcast"
+    "searchResults day1forcast day2forcast day3forcast"
+    ". . . .";
+}
+
+.searchBar {
+  grid-area: searchBar;
+  border: 2px solid black;
+}
+
+.title {
+  grid-area: title;
+  border: 2px solid black;
+}
+
+.searchResults {
+  grid-area: searchResults;
+  border: 2px solid black;
+  width: 250px;
+}
+
+.currentForcast {
+  grid-area: currentForcast;
+  border: 2px solid black;
+}
+
+.day1forcast {
+  grid-area: day1forcast;
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+}
+
+.day2forcast {
+  grid-area: day2forcast;
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+}
+
+.day3forcast {
+  grid-area: day3forcast;
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+}
