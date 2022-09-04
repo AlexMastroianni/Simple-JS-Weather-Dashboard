@@ -2,8 +2,11 @@
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;800&display=swap");
 }
 body {
-  background-color: rgba(82, 90, 89, 1);
+  /* background: url("/assests/images/pexels-soubhagya-maharana-5245865.jpg"); */
+  /* background-size: cover; */
+  background-color: darkgrey;
 }
+
 .container {
   display: grid;
   padding: 10px;
@@ -19,7 +22,7 @@ body {
     "searchResults currentForcast currentForcast currentForcast"
     "searchResults day1forcast day2forcast day3forcast"
     ". . . .";
-  background-color: rgba(141, 152, 150, 1);
+  background-color: grey;
   color: aliceblue;
   border-radius: 25px;
   scale: 0.9;
@@ -31,25 +34,20 @@ body {
   border-radius: 25px;
   margin: 5px;
   padding: 5px;
-  display: flex;
-  justify-content: center;
-  background-color: blanchedalmond;
 }
 
 .title {
   grid-area: title;
-  border: 2px solid black;
   margin: 5px;
   border-radius: 25px;
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bolder;
-  font-size: x-large;
+  text-shadow: 2px, 2px, 10px;
 }
 
-.searchResults {
+.searchResult {
   grid-area: searchResults;
   border: 2px solid black;
   margin: 5px;
