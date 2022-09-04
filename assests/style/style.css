@@ -1,5 +1,12 @@
+* {
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;800&display=swap");
+}
+body {
+  background-color: rgba(82, 90, 89, 1);
+}
 .container {
   display: grid;
+  padding: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.4fr 0.6fr 2.1fr 1.4fr 0.5fr;
   grid-auto-columns: 1fr;
@@ -12,46 +19,79 @@
     "searchResults currentForcast currentForcast currentForcast"
     "searchResults day1forcast day2forcast day3forcast"
     ". . . .";
+  background-color: rgba(141, 152, 150, 1);
+  color: aliceblue;
+  border-radius: 25px;
+  scale: 0.9;
 }
 
 .searchBar {
   grid-area: searchBar;
   border: 2px solid black;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: blanchedalmond;
 }
 
 .title {
   grid-area: title;
   border: 2px solid black;
+  margin: 5px;
+  border-radius: 25px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  font-size: x-large;
 }
 
 .searchResults {
   grid-area: searchResults;
   border: 2px solid black;
+  margin: 5px;
+  border-radius: 25px;
+  padding: 5px;
   width: 250px;
 }
 
 .currentForcast {
   grid-area: currentForcast;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 5px;
   border: 2px solid black;
 }
 
 .day1forcast {
   grid-area: day1forcast;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 5px;
   border: 2px solid black;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
 
 .day2forcast {
   grid-area: day2forcast;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 5px;
   border: 2px solid black;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
 
 .day3forcast {
   grid-area: day3forcast;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 5px;
   border: 2px solid black;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
