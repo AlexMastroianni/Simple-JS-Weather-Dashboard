@@ -13,6 +13,7 @@ var getWeather = function (city) {
       if (response.ok) {
         response.json().then(function (data) {
           showWeather(data);
+          console.log(data);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -26,9 +27,9 @@ var getWeather = function (city) {
 // Temp == main.feels_like
 
 var showWeather = function (weatherData) {
-  $("#cityTemp").text(
-    "Temperature: " + weatherData.main.temp.toFixed(1) + "°C"
-  );
+  $("#cityTemp").text("Temperature: " + weatherData.main.temp + "°C");
+  $("#cityHum").text("Humidity: " + weatherData.main.humidity + "%");
+  $("#cityWind").text("Wind: " + weatherData.wind.speed + "m/s");
 };
 
 let searchHandler = function (event) {
