@@ -49,25 +49,40 @@ let showWeather = function (weatherData) {
   $("#cityTemp").text("Temperature: " + weatherData.main.temp + "°C");
   $("#cityHum").text("Humidity: " + weatherData.main.humidity + "%");
   $("#cityWind").text("WindSpeed: " + weatherData.wind.speed + "ms");
-  $("#cityHum").text("Humidity: " + weatherData.main.humidity + "%");
+  $("#cityImg").html(
+    "<img src='https://openweathermap.org/img/w/" +
+      weatherData.weather[0].icon +
+      ".png' >"
+  );
 };
 let showForcast = function (forcastData) {
   $("#day1Temp").text("Temperature: " + forcastData.list[0].main.temp + "°C");
   $("#day1Hum").text("Humidity: " + forcastData.list[0].main.humidity + "%");
   $("#day1Wind").text("WindSpeed: " + forcastData.list[0].wind.speed + "ms");
-  $("#day1UV").text("Humidity: " + forcastData.list[0].main.humidity + "%");
+  $("#day1Img").html(
+    "<img src='https://openweathermap.org/img/w/" +
+      forcastData.list[0].weather[0].icon +
+      ".png' >"
+  );
 
   $("#day2Temp").text("Temperature: " + forcastData.list[1].main.temp + "°C");
   $("#day2Hum").text("Humidity: " + forcastData.list[1].main.humidity + "%");
   $("#day2Wind").text("WindSpeed: " + forcastData.list[1].wind.speed + "ms");
-  $("#day2UV").text("Humidity: " + forcastData.list[1].main.humidity + "%");
+  $("#day2Img").html(
+    "<img src='https://openweathermap.org/img/w/" +
+      forcastData.list[1].weather[0].icon +
+      ".png' >"
+  );
 
   $("#day3Temp").text("Temperature: " + forcastData.list[2].main.temp + "°C");
   $("#day3Hum").text("Humidity: " + forcastData.list[2].main.humidity + "%");
   $("#day3Wind").text("WindSpeed: " + forcastData.list[2].wind.speed + "ms");
-  $("#day3UV").text("Humidity: " + forcastData.list[2].main.humidity + "%");
+  $("#day3Img").html(
+    "<img src='https://openweathermap.org/img/w/" +
+      forcastData.list[2].weather[0].icon +
+      ".png' >"
+  );
 };
-
 let getUV = function (weatherData) {
   let UVUrl =
     "https://api.openweathermap.org/data/2.5/uvi?lat=" +
@@ -80,7 +95,7 @@ let getUV = function (weatherData) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          // showUV(data);
+          showUV(data);
           console.log("UV data", data);
         });
       } else {
@@ -91,13 +106,16 @@ let getUV = function (weatherData) {
       alert("Unable to connect to database");
     });
 };
-
-// let showUV = function (UVData) {
-//   $("#day1UV").text("Humidity: " + UVData.list[0].main.humidity + "%");
-//   $("#day2UV").text("Humidity: " + UVData.list[1].main.humidity + "%");
-//   $("#day3UV").text("Humidity: " + UVData.list[2].main.humidity + "%");
-// };
-
+let showUV = function (UVData) {
+  $("#cityUV").text("UV Index: " + UVData.value);
+  if (UVData.value >= 0 && UVData.value <= 4) {
+    $("#cityUV").css("background-color", "green");
+  } else if (UVData.value >= 4 && UVData.value <= 6) {
+    $("#cityUV").css("background-color", "yellow");
+  } else if (UVData.value >= 6 && UVData.value <= 10) {
+    $("#cityUV").css("background-color", "red");
+  }
+};
 let searchHandler = function (event) {
   event.preventDefault();
   let userInput = userCityEl.value;
@@ -112,18 +130,24 @@ let searchHandler = function (event) {
     alert("Please enter a city name");
   }
 };
-
 let addToSearchList = function () {
   let userLastSearch = userCityEl.value;
   let li = document.createElement("li");
   li.textContent = userLastSearch;
   searchListEL.appendChild(li);
 };
-
 let renderSearchList = searchHistory.forEach((city) => {
   let li = document.createElement("li");
   li.textContent = city;
   searchListEL.appendChild(li);
+  $("#clearBtn").on("click", clearHistory);
 });
+
+function clearHistory() {
+  localStorage.clear();
+  location.reload();
+}
+
+$("#clearBtn").on("click", clearHistory);
 
 $("#searchBtn").on("click", searchHandler);

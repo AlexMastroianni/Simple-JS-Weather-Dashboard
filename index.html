@@ -10,58 +10,103 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="/assests/style/style.css" />
     <title>Weather</title>
   </head>
+
+
   <body>
-    <div class="container">
-      <div class="searchBar">
-        <form id="searchForm">
-          <input type="text" id="cityName" placeholder="Search.." />
-          <button id="searchBtn">Click Here</button>
-        </form>
-        <!-- search bar added -->
-      </div>
+    <section class="hero is-link" >
+    <div class="hero-body container"> 
       <div class="title">
         <h1>Weather Dashboard</h1>
+  
+        <!-- search bar added -->
       </div>
-      <div class="searchResult">
-        <ul id="searchList"></ul>
+     
       </div>
-      <div class="currentForcast">
-        current forcast
-        <div id="cityTemp">Temp</div>
-        <div id="cityHum">humitiyy</div>
-        <div id="cityWind">windspeed</div>
-        <div id="cityUV">UV</div>
+    </section>
 
-        <!-- data added from js -->
+<div class="tile is-ancestor p-6">
+  <div class="tile is-vertical">
+    <div class="tile">
+      <div class="tile is-parent is-4">
+        <article class="tile is-child box">
+          <p class="title">Search List</p>
+          <div class="searchBar">
+        <form id="searchForm">
+          <input type="text" id="cityName" placeholder="Search.." />
+          <button id="searchBtn" class="button">Click Here</button>
+        </form>
+          <div class="content">
+          <div class="searchResult">
+          <ul id="searchList"></ul>
       </div>
-      <!-- forcast cards from js  -->
-      <div class="day1forcast">
-        day 1
-        <div id="day1Temp">temp</div>
-        <div id="day1Hum">humitiyy</div>
-        <div id="day1Wind">windspeed</div>
-        <div id="day1UV">UV</div>
+       <button id="clearBtn" class="button">Clear</button>
+          </div>
+        </article>
       </div>
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="tile is-parent is-12">
+            <article class="tile is-child box">
+              <div class="currentForcast">
+              <h1>Current Forcast</h1>
+              <div id="cityImg"></div>
+              <div id="cityTemp">Temperature</div>
+              <div id="cityHum">Humidity</div>
+              <div id="cityWind">WindSpeed</div>
+              <div id="cityUV">UV Index</div>
+             
+            </article>
+          </div>
+          <div class="tile is-parent">
+
+          </div>
+        </div>
+        <div class="tile is-parent">
+        <article class="tile is-child box">
+        <div class="day1forcast">
+        Day One
+        <div id="day1Img"></div>
+        <div id="day1Temp">Temperature</div>
+        <div id="day1Hum">Humidity</div>
+        <div id="day1Wind">WindSpeed</div>
+      </div>
+        </article>
+        <article class="tile is-child box" >
       <div class="day2forcast">
-        day 2
-        <div id="day2Temp">temp</div>
-        <div id="day2Hum">humitiyy</div>
-        <div id="day2Wind">windspeed</div>
-        <div id="day2UV">UV</div>
+        Day Two
+        <div id="day2Img"></div>
+        <div id="day2Temp">Temperature</div>
+        <div id="day2Hum">Humidity</div>
+        <div id="day2Wind">WindSpeed</div>
       </div>
+    </article>
+    <article  class="tile is-child box">
       <div class="day3forcast">
-        day 3
-        <div id="day3Temp">temp</div>
-        <div id="day31Hum">humitiyy</div>
-        <div id="day3Wind">windspeed</div>
-        <div id="day3UV">UV</div>
+        Day Three
+        <div id="day3Img"></div>
+        <div id="day3Temp">Temperature</div>
+        <div id="day31Hum">Humidity</div>
+        <div id="day3Wind">WindSpeed</div>
       </div>
     </div>
+        </article>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
       src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
