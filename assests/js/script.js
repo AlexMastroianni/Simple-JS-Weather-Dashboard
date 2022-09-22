@@ -5,6 +5,7 @@ const userCityEl = document.querySelector("#cityName");
 const searchForm = document.querySelector("#searchForm");
 let searchHistory = JSON.parse(window.localStorage.getItem("searchList")) || [];
 
+// open weather API call to get current day forcast
 let getWeather = function (city) {
   var apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -27,6 +28,8 @@ let getWeather = function (city) {
       alert("Unable to connect to database");
     });
 };
+
+// open weather API call to get 5 day forcast
 let getForcast = function (weatherData) {
   var forCastURl =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -47,6 +50,8 @@ let getForcast = function (weatherData) {
       alert("Unable to connect to database");
     });
 };
+
+// rendering info from API call to tiles
 let showWeather = function (weatherData) {
   $("#cityCurrentName").text("Current Forcast: " + weatherData.name);
   $("#cityTemp").text("Temperature: " + weatherData.main.temp + "°C");
@@ -58,6 +63,7 @@ let showWeather = function (weatherData) {
       ".png' >"
   );
 };
+// rendering forcast from API call to tiles
 let showForcast = function (forcastData) {
   $("#day1Temp").text("Temperature: " + forcastData.list[0].main.temp + "°C");
   $("#day1Hum").text("Humidity: " + forcastData.list[0].main.humidity + "%");
@@ -103,6 +109,8 @@ let showForcast = function (forcastData) {
       ".png' >"
   );
 };
+
+// using lat and lon to call another API to show UV index
 let getUV = function (weatherData) {
   let UVUrl =
     "https://api.openweathermap.org/data/2.5/uvi?lat=" +
@@ -126,6 +134,8 @@ let getUV = function (weatherData) {
       alert("Unable to connect to database");
     });
 };
+
+//rednering UV dadta
 let showUV = function (UVData) {
   $("#cityUV").text("UV Index: " + UVData.value);
   if (UVData.value >= 0 && UVData.value <= 4) {
@@ -136,6 +146,8 @@ let showUV = function (UVData) {
     $("#cityUV").css("background-color", "red");
   }
 };
+
+// Allow all LI items in search history to be clickable and re render tiles
 searchListEL.addEventListener("click", function (e) {
   e.preventDefault();
   const target = e.target;
@@ -146,6 +158,7 @@ searchListEL.addEventListener("click", function (e) {
   }
 });
 
+// adding user input into local storage
 let searchHandler = function (event) {
   event.preventDefault();
   let userInput = userCityEl.value;
@@ -174,11 +187,11 @@ let addToSearchList = function (userInput) {
   searchListEL.appendChild(li);
   removeDouble();
 };
+
 searchHistory.forEach((city) => {
   let li = document.createElement("li");
   li.textContent = city;
   searchListEL.appendChild(li);
-  $("#clearBtn").on("click", clearHistory);
 });
 
 let removeDouble = function () {
@@ -188,12 +201,13 @@ let removeDouble = function () {
     return;
   }
 };
-
+// clear local storage
 function clearHistory() {
   localStorage.clear();
   location.reload();
 }
 
+// button handlers
 $("#clearBtn").on("click", clearHistory);
 
 $("#searchBtn").on("click", searchHandler);
