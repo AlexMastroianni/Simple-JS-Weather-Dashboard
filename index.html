@@ -36,7 +36,7 @@
 <div class="tile is-ancestor p-6">
   <div class="tile is-vertical">
     <div class="tile">
-      <div class="tile is-parent is-4">
+      <div class="tile is-parent is-2">
         <article class="tile is-child box">
           <p class="title">Search List</p>
           <div class="searchBar">
@@ -57,7 +57,8 @@
           <div class="tile is-parent is-12">
             <article class="tile is-child box">
               <div class="currentForcast">
-              <h1>Current Forcast</h1>
+              <h1 id="cityCurrentName">Current Forcast</h1>
+              </div>
               <div id="cityImg"></div>
               <div id="cityTemp">Temperature</div>
               <div id="cityHum">Humidity</div>
@@ -98,7 +99,29 @@
         <div id="day3Wind">WindSpeed</div>
       </div>
     </div>
-        </article>
+     </article>
+     <div class="tile is-parent">
+        <article  class="tile is-child box">
+      <div class="day3forcast">
+        Day Four
+        <div id="day4Img"></div>
+        <div id="day4Temp">Temperature</div>
+        <div id="day41Hum">Humidity</div>
+        <div id="day4Wind">WindSpeed</div>
+      </div>
+     </article>
+        <article  class="tile is-child box">
+      <div class="day3forcast">
+        Day Five
+        <div id="day5Img"></div>
+        <div id="day5Temp">Temperature</div>
+        <div id="day51Hum">Humidity</div>
+        <div id="day5Wind">WindSpeed</div>
+      </div>
+    </div>
+     </div>
+     </article>
+
         </div>
       </div>
     </div>
@@ -106,7 +129,7 @@
 
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
       src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"

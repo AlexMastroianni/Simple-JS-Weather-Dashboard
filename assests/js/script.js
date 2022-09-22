@@ -1,6 +1,8 @@
+let city = "";
 let citySearch = [];
 const searchListEL = document.querySelector("#searchList");
 const userCityEl = document.querySelector("#cityName");
+const searchForm = document.querySelector("#searchForm");
 let searchHistory = JSON.parse(window.localStorage.getItem("searchList")) || [];
 
 let getWeather = function (city) {
@@ -46,6 +48,7 @@ let getForcast = function (weatherData) {
     });
 };
 let showWeather = function (weatherData) {
+  $("#cityCurrentName").text("Current Forcast: " + weatherData.name);
   $("#cityTemp").text("Temperature: " + weatherData.main.temp + "°C");
   $("#cityHum").text("Humidity: " + weatherData.main.humidity + "%");
   $("#cityWind").text("WindSpeed: " + weatherData.wind.speed + "ms");
@@ -78,6 +81,23 @@ let showForcast = function (forcastData) {
   $("#day3Hum").text("Humidity: " + forcastData.list[2].main.humidity + "%");
   $("#day3Wind").text("WindSpeed: " + forcastData.list[2].wind.speed + "ms");
   $("#day3Img").html(
+    "<img src='https://openweathermap.org/img/w/" +
+      forcastData.list[2].weather[0].icon +
+      ".png' >"
+  );
+  $("#day4Temp").text("Temperature: " + forcastData.list[3].main.temp + "°C");
+  $("#day4Hum").text("Humidity: " + forcastData.list[3].main.humidity + "%");
+  $("#day4Wind").text("WindSpeed: " + forcastData.list[3].wind.speed + "ms");
+  $("#day4Img").html(
+    "<img src='https://openweathermap.org/img/w/" +
+      forcastData.list[2].weather[0].icon +
+      ".png' >"
+  );
+
+  $("#day5Temp").text("Temperature: " + forcastData.list[4].main.temp + "°C");
+  $("#day5Hum").text("Humidity: " + forcastData.list[4].main.humidity + "%");
+  $("#day5Wind").text("WindSpeed: " + forcastData.list[4].wind.speed + "ms");
+  $("#day5Img").html(
     "<img src='https://openweathermap.org/img/w/" +
       forcastData.list[2].weather[0].icon +
       ".png' >"
@@ -116,32 +136,58 @@ let showUV = function (UVData) {
     $("#cityUV").css("background-color", "red");
   }
 };
+searchListEL.addEventListener("click", function (e) {
+  e.preventDefault();
+  const target = e.target;
+  if (target.matches("li")) {
+    city = target.textContent;
+    getWeather(city);
+    console.log(city);
+  }
+});
+
 let searchHandler = function (event) {
   event.preventDefault();
   let userInput = userCityEl.value;
-
   if (userInput) {
     getWeather(userInput);
     let citySearch = userCityEl.value;
     searchHistory.push(citySearch);
     localStorage.setItem("searchList", JSON.stringify(searchHistory));
-    addToSearchList();
+    addToSearchList(userInput);
   } else {
     alert("Please enter a city name");
   }
+  searchForm.reset();
+  return false;
 };
-let addToSearchList = function () {
-  let userLastSearch = userCityEl.value;
+
+let resetSearch = function (event) {
+  event.preventDefault();
+  form.reset;
+};
+
+let addToSearchList = function (userInput) {
+  let userLastSearch = userInput;
   let li = document.createElement("li");
   li.textContent = userLastSearch;
   searchListEL.appendChild(li);
+  removeDouble();
 };
-let renderSearchList = searchHistory.forEach((city) => {
+searchHistory.forEach((city) => {
   let li = document.createElement("li");
   li.textContent = city;
   searchListEL.appendChild(li);
   $("#clearBtn").on("click", clearHistory);
 });
+
+let removeDouble = function () {
+  if (searchHistory.includes(searchListEL)) {
+    localStorage.removeItem(userInput);
+  } else {
+    return;
+  }
+};
 
 function clearHistory() {
   localStorage.clear();

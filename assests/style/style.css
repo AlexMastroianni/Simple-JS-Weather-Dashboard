@@ -7,3 +7,8 @@ body {
   /* background-size: cover; */
   list-style: none;
 }
+
+#searchList li:hover {
+  background-color: bisque;
+  width: 200px;
+}
