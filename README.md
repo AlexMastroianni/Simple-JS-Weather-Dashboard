@@ -1,9 +1,9 @@
-# week-6-challenge - Weather Dashboard
+# Weather Dashboard
 
 
 
 
-# This weeks challenge
+# The App
 
 ### Overview
 
